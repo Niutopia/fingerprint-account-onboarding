@@ -1,0 +1,67 @@
+{
+  "run_id": "example-run",
+  "authorization": {
+    "confirmed": true,
+    "scope": "authorized multi-account onboarding"
+  },
+  "provider": {
+    "name": "configured-fingerprint-browser",
+    "api_base": "http://127.0.0.1:00000",
+    "auth_ref": "env:FINGERPRINT_BROWSER_API_KEY"
+  },
+  "fingerprint": {
+    "mode": "provider_generated_or_fresh",
+    "desktop_only": true,
+    "minimum_viewport_width": 900
+  },
+  "proxy_policy": {
+    "capacity_source": "external-proxy-pool",
+    "max_uses_per_ip": 4,
+    "usage_input": "path-or-api-readout"
+  },
+  "region": {
+    "country_code": "",
+    "locale": "",
+    "timezone": "",
+    "phone_country_code": "",
+    "mockaddress_country": "",
+    "mockaddress_url": "",
+    "subdivision": ""
+  },
+  "accounts": [
+    {
+      "key": "account-1",
+      "email": "<masked or protected reference>",
+      "credential_ref": "env:ACCOUNT_1_PASSWORD",
+      "totp_ref": "env:ACCOUNT_1_TOTP",
+      "phone_ref": "env:ACCOUNT_1_PHONE",
+      "profile_ref": "<provider profile id or unassigned>",
+      "proxy_ref": "<provider proxy id or unassigned>",
+      "address_strategy": "mockaddress"
+    }
+  ],
+  "human_gates": {
+    "owner": "user",
+    "stop_at": ["image_captcha", "audio_captcha", "sms_otp", "trusted_phone_2fa"]
+  },
+  "post_actions": {
+    "shipping_address": true,
+    "copy_billing_address": true,
+    "warmup_chat": {
+      "enabled": false,
+      "language": "",
+      "topic_domain": "",
+      "sentences_per_account": 2,
+      "minimum_seconds_between_accounts": 20
+    }
+  },
+  "pacing": {
+    "character_delay_ms": 90,
+    "post_type_delay_ms": 1500
+  },
+  "storage": {
+    "ledger_path": ".secrets/<run-id>/accounts.json",
+    "ledger_mode": "0600",
+    "temporary_cache": ".cache/<run-id>"
+  }
+}

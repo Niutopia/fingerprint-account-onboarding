@@ -1,0 +1,4 @@
+interface:
+  display_name: "指纹浏览器账户开户"
+  short_description: "可配置指纹浏览器的授权多账户开户、地址与状态校验全流程"
+  default_prompt: "Use $fingerprint-account-onboarding to prepare and verify an authorized multi-account onboarding run."
